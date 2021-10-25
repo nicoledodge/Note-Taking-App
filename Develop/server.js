@@ -9,6 +9,6 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get
-app.post
-app.delete
+app.listen(PORT, () =>
+    console.log(`App listening at http://localhost:${PORT} 🚀`)
+);n
