@@ -10,20 +10,16 @@ const uniqid = require ("uniqid");
 const fs = require('fs');
 const path = require("path");
 
-router.get("/notes", (req, res) => {
-    console.log(dbjson);
-    res.json(dbjson)
-})
+router.get('/notes', (req, res) => res.json(dbjson));
 
 //POST routes to notes
-router.post("/notes", (req, res) => {
-    req.body.id = uniqid()
+router.post('/notes', (req, res) => {
+
+    req.body.id = uniqid();
     dbjson.push(req.body)
-    fs.writeFile(__dirname, '/../db/db.json', JSON.stringify(dbjson), err => {
-        if(err) throw (err)
-    })
-    res.end()
-});
+    fs.writeFileSync(path.join(__dirname, '../db/db.json'), JSON.stringify(dbjson));
+    return res.status(200).json(dbjson)
+})
 
 router.delete('api/notes/:id', (req, res) => {
     const deletedId = req.params.id
