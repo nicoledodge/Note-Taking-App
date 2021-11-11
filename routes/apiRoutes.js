@@ -21,10 +21,10 @@ router.post('/notes', (req, res) => {
     return res.status(200).json(dbjson)
 })
 
-router.delete('/api/notes/:id', (req, res) => {
+router.delete('/notes/:id', (req, res) => {
     console.log("hello")
 
-    return res.status(200).json(req);
+    // return res.status(200).json(req);
 
     let newNote = []
     newNote = dbjson
